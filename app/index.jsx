@@ -1,22 +1,27 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image , useColorScheme  } from "react-native";
 import { Link } from "expo-router";
+import {Colors} from '../constants/Color'
 
 const Home = () => {
+    const colorScheme = useColorScheme()
+    const theme = Colors[colorScheme] ?? Colors.light
   return (
+    
     <View style={styles.container}>
       <Image source={{ uri: 'https://png.pngtree.com/png-clipart/20190611/original/pngtree-wolf-logo-png-image_2306634.jpg' }} style={styles.image} />
-      <Text style={styles.title}>home</Text>
-      <Text>Welcome to the React Native App!</Text>
-      
+      <Text style={[styles.title, { color: theme.title }]}>home</Text>
+      <Text style={{ color: theme.text }}>Welcome to the React Native App!</Text>
+
       <View style={styles.card}>
-        
-        <Text>
+
+        <Text style={{ color: theme.text }}>
           This is a simple React Native application that demonstrates the basic structure and components of a mobile app built using React Native. You can customize this app by adding more features, screens, and styles as needed.
         </Text>
       </View>
       <Link style={styles.link} href="about">Go to About Page</Link>
       <Link style={styles.link} href="contact">Go to Contact Page</Link>
-    </View>
+      </View>
+      
   )
 }
 
