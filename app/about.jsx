@@ -1,32 +1,35 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { Link } from "expo-router";
+import { Link } from 'expo-router'
+import { StyleSheet } from 'react-native'
+
+import ThemedView from "../components/thmedView"
+import ThemedText from '../components/ThemedText'
 
 const About = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Welcome to the
-        About Page!</Text>
-      <Link style={styles.link} href="/">Go to Home Page</Link>
-    </View>
+    <ThemedView style={styles.container}>
+      <ThemedText style={styles.title} title={true}>About Page</ThemedText>
+
+      <Link href="/" style={styles.link}>
+        <ThemedText>Home Page</ThemedText>
+      </Link>
+    </ThemedView>
   )
 }
 
 export default About
 
 const styles = StyleSheet.create({
-   container: {
+  container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 18,
   },
   link: {
-    color: 'blue',
-    textDecorationLine: 'underline',
+    marginVertical: 10,
+    borderBottomWidth: 1
   }
 })

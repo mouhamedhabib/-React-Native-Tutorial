@@ -1,59 +1,51 @@
-import { View, Text, StyleSheet, Image , useColorScheme  } from "react-native";
-import { Link } from "expo-router";
-import {Colors} from '../constants/Color'
+import { StyleSheet } from 'react-native'
+import { Link } from 'expo-router'
+
+import ThemedView from "../components/thmedView"
+import ThemedText from "../components/ThemedText"
+import ThemedLogo from "../components/ThemedLogo"
+import Spacer from "../components/Spacer"
 
 const Home = () => {
-    const colorScheme = useColorScheme()
-    const theme = Colors[colorScheme] ?? Colors.light
   return (
-    
-    <View style={styles.container}>
-      <Image source={{ uri: 'https://png.pngtree.com/png-clipart/20190611/original/pngtree-wolf-logo-png-image_2306634.jpg' }} style={styles.image} />
-      <Text style={[styles.title, { color: theme.title }]}>home</Text>
-      <Text style={{ color: theme.text }}>Welcome to the React Native App!</Text>
+    <ThemedView style={styles.container}>
+      <ThemedLogo />
+      <Spacer />
 
-      <View style={styles.card}>
+      <ThemedText style={styles.title} title={true}>The Number 1</ThemedText>
 
-        <Text style={{ color: theme.text }}>
-          This is a simple React Native application that demonstrates the basic structure and components of a mobile app built using React Native. You can customize this app by adding more features, screens, and styles as needed.
-        </Text>
-      </View>
-      <Link style={styles.link} href="about">Go to About Page</Link>
-      <Link style={styles.link} href="contact">Go to Contact Page</Link>
-      </View>
-      
+      <ThemedText style={{ marginTop: 10, marginBottom: 30 }}>
+        Reading List App
+      </ThemedText>
+
+      <Link href="/about" style={styles.link}>
+        <ThemedText>About Page</ThemedText>
+      </Link>
+
+      <Link href="/contact" style={styles.link}>
+        <ThemedText>Contact Page</ThemedText>
+      </Link>
+    </ThemedView>
   )
 }
 
 export default Home
 
 const styles = StyleSheet.create({
-  image: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    marginBottom: 20,
-  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  img: {
+    marginVertical: 20
+  },
   title: {
     fontWeight: 'bold',
-    fontSize: 20,
-  },
-  card: {
-    backgroundColor: '#f0f0f0',
-    padding: 10,
-    marginVertical: 5,
-    borderRadius: 5,
+    fontSize: 18,
   },
   link: {
-    color: 'blue',
-    textDecorationLine: 'underline',
+    marginVertical: 10,
+    borderBottomWidth: 1
   }
-
-
 })
