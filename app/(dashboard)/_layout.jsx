@@ -1,6 +1,7 @@
 import { Tabs } from "expo-router"
 import { useColorScheme } from "react-native"
 import { Colors } from "../../constants/Colors"
+import Icon from "react-native-vector-icons/MaterialIcons"
 
 export default function DashboardLayout() {
   const colorScheme = useColorScheme()
@@ -17,15 +18,15 @@ export default function DashboardLayout() {
     >
       <Tabs.Screen 
         name="profile"
-        options={{ title: "Profile" }} 
+        options={{ title: "Profile" , tabBarIcon: ({ focused, color }) => <Icon name={focused ? "person" : "person-outline"} size={24} color={color} /> }}
       />
       <Tabs.Screen 
         name="books"
-        options={{ title: "Books" }} 
+        options={{ title: "Books", tabBarIcon: ({ color }) => <Icon name="book" size={24} color={color} /> }} 
       />
       <Tabs.Screen 
         name="create"
-        options={{ title: "Create", }} 
+        options={{ title: "Create", tabBarIcon: ({ color }) => <Icon name="add" size={24} color={color} /> }} 
       />
     </Tabs>
   )
