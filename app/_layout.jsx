@@ -1,11 +1,19 @@
 import { Stack } from "expo-router"
 import { Colors } from "../constants/Colors"
+import { client } from "../lib/appwrite"
+import { useEffect } from "react"
 import { useColorScheme } from "react-native"
 import { StatusBar } from "expo-status-bar"
 
 export default function RootLayout() {
   const colorScheme = useColorScheme()
   const theme = Colors[colorScheme] ?? Colors.light
+
+  useEffect(() => {
+    client.ping().catch((error) => {
+      console.error("Appwrite ping failed:", error)
+    })
+  }, [])
 
   return (
     <>
